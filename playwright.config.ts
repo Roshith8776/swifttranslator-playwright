@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
-  testMatch: '*/.spec.ts',
+  testMatch: '**/*.spec.ts',
   workers: 1,
   use: {
     headless: false, // show browser window so you can see typing
