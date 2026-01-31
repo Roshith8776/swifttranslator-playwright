@@ -1,4 +1,4 @@
-# IT23216464
+# IT23216464 - R. M. R. T. Rajapakshe
 
 ### Project Overview
 This repository contains the automated test suite for Assignment 1 of the IT3040-ITPM module. It identifies 24 positive and 10 negative functional test scenarios for the Swift Translator (Singlish to Sinhala) web application. <br>
