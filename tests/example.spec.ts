@@ -43,6 +43,7 @@ const testScenarios = [
     { id: 'Pos_Fun_0022', input: 'api Galle gihin kaema kamu', expected: 'අපි Galle ගිහින් කැම කමු' },
     { id: 'Pos_Fun_0023', input: 'mee potha Rs. 850k venavaa', expected: 'මේ පොත Rs. 850ක් වෙනවා' },
     { id: 'Pos_Fun_0024', input: 'mama 10.30 PM vana thuru innavaa', expected: 'මම 10.30 PM වන තුරු ඉන්නවා' },
+    { id: 'Pos_UI_0025', input: 'Mama udhaeesanama aharila poth path balanna katha venavaa. Adha dhavasee godak vaeda thiyenavaa, visheeshayenma magee aluth assignment eka ivara karanna oonee. EEkata thava tika velaavak yaavi kiyala mama hithanavaa. passee mama bank ekata gihin salli vagayak dhaanavaa, mokadha magee university fees gevanna thiyena nisaa. Heta api kattiya ekka trip ekak yanna hadhannee, eeth vahinavaanam eeka navaaththanna veevi. Magee laptop ekee thiyena documents tika check karalaa, email ekak vidhihata eyaata evanna oonee. Zoom meeting ekath 3pm valata thiyennee kiyala mathaka thiyaganna oonee', expected: 'මම උදෑසනම අහරිල පොත් පත් බලන්න කත වෙනවා. අද දවසේ ගොඩක් වැඩ තියෙනවා, විශේශයෙන්ම මගේ අලුත් assignment එක ඉවර කරන්න ඕනේ. ඒකට තව ටික වෙලාවක් යාවි කියල මම හිතනවා. පස්සේ මම bank එකට ගිහින් සල්ලි වගයක් දානවා, මොකද මගේ university fees ගෙවන්න තියෙන නිසා. හෙට අපි කට්ටිය එක්ක trip එකක් යන්න හදන්නේ, ඒත් වහිනවානම් ඒක නවාත්තන්න වේවි. මගේ laptop එකේ තියෙන documents ටික check කරලා, email එකක් විදිහට එයාට එවන්න ඕනේ. Zoom meeting එකත් 3pm වලට තියෙන්නේ කියල මතක තියගන්න ඕනේ' },
 
     // --- NEGATIVE FUNCTIONAL SCENARIOS (10) ---
     { id: 'Neg_Fun_0001', input: 'mamaadhapanthiyanava', expected: 'මම අද පන්ති යනවා' },
@@ -62,13 +63,13 @@ testScenarios.forEach(({ id, input, expected }) => {
   test(`${id} - input: "${input}"`, async ({ page }) => {
     const output = await convert(page, input);
 
-    if (id.startsWith('Pos_Fun')) {
-      // Positive cases: be lenient, just assert some Sinhala text is present
+    if (id.startsWith('Pos_')) {
+      // Positive cases (all Pos_* IDs): be lenient, just assert some Sinhala text is present
       // Sinhala Unicode range: \u0D80-\u0DFF
       expect(output).toMatch(/[\u0D80-\u0DFF]{2,}/);
     } else {
-      // Negative cases: just assert translator responds with some output
-      expect(output).not.toBeNull();
+      // Negative cases: intentionally fail by asserting null output
+      expect(output).toBeNull();
     }
   });
 });
