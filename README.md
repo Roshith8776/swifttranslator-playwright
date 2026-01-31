@@ -30,14 +30,14 @@ npx playwright install<br><br>
 ### Running the Tests
 You can execute the test suite using the following commands:<br>
 
-•Run all tests (headless):<br>
+- Run all tests (headless):<br>
 
 npx playwright test<br><br>
 
-•Run tests and view the report:<br>
+- Run tests and view the report:<br>
 
 npx playwright show-report<br><br>
 
-•Run tests in headed mode (to see the browser):<br>
+- Run tests in headed mode (to see the browser):<br>
 
 npx playwright test --headed<br><br>
